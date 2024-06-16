@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DerivBotConfiguration>
+    <BotSettings>
+        <BotName>VolatilityOverUnderDigitBot</BotName>
+        <BotVersion>1.0</BotVersion>
+        <CreationDate>2024-06-16</CreationDate>
+    </BotSettings>
+    <Market>
+        <Asset>Volatility_100</Asset>
+        <TradeType>Digits</TradeType>
+        <ContractType>DigitOver</ContractType>
+        <Duration>
+            <Value>1</Value>
+            <Unit>Ticks</Unit>
+        </Duration>
+        <Prediction>0</Prediction>
+    </Market>
+    <TradeParameters>
+        <InitialStake>1.00</InitialStake>
+        <Currency>USD</Currency>
+        <Multiplier>2</Multiplier>
+    </TradeParameters>
+    <Strategy>
+        <Type>FixedStake</Type>
+        <Description>Trade 'DigitOver' when the last digit is 0</Description>
+    </Strategy>
+    <RiskManagement>
+        <MaxTrades>100</MaxTrades>
+        <MaxDailyLoss>50.00</MaxDailyLoss>
+        <MaxDailyProfit>100.00</MaxDailyProfit>
+    </RiskManagement>
+    <Conditions>
+        <EntryCondition>
+            <Description>Enter trade when the last digit of the current tick is 0</Description>
+            <ConditionType>DigitEquals</ConditionType>
+            <Value>0</Value>
+        </EntryCondition>
+        <ExitCondition>
+            <Description>Exit trade after 1 tick</Description>
+            <ConditionType>Duration</ConditionType>
+            <Value>1</Value>
+        </ExitCondition>
+    </Conditions>
+    <Logging>
+        <LogLevel>INFO</LogLevel>
+        <LogToFile>true</LogToFile>
+        <LogFilePath>/var/log/derivbot/trades.log</LogFilePath>
+    </Logging>
+</DerivBotConfiguration>
